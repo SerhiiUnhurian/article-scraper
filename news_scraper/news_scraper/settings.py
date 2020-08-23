@@ -24,12 +24,15 @@
 # sys.path.insert(0, DJANGO_PROJECT_PATH)
 # os.environ['DJANGO_SETTINGS_MODULE'] = DJANGO_SETTINGS_MODULE
 
-
-import os
 import sys
+import os
+import django
 
 sys.path.append(
-    '/home/serhii/Documents/JetSoft/python_tc_2020/learn_english/')
+    '/home/serhii/Documents/JetSoft/python_tc_2020/learn_english')
+sys.path.append(os.path.realpath(os.path.join(os.path.dirname(__file__), '../../learn_english')))
+sys.path.append(os.path.realpath(os.path.join(os.path.dirname(__file__), '../../learn_english/learn_english')))
+
 os.environ['DJANGO_SETTINGS_MODULE'] = 'learn_english.settings'
 
 BOT_NAME = 'news_scraper'
@@ -37,6 +40,7 @@ BOT_NAME = 'news_scraper'
 SPIDER_MODULES = ['news_scraper.spiders']
 NEWSPIDER_MODULE = 'news_scraper.spiders'
 
+django.setup()
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'news_scraper (+http://www.yourdomain.com)'
@@ -88,7 +92,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'news_scraper.pipelines.NewsScraperPipeline': 1000,
+    'news_scraper.pipelines.NewsScraperPipeline': 300,
 }
 
 

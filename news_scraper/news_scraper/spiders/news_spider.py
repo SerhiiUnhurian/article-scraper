@@ -1,6 +1,6 @@
 import json
 import scrapy
-from news_scraper.items import ArticleItem
+from ..items import ArticleItem
 from datetime import datetime, date
 
 # DATE = datetime.date(datetime.now())
