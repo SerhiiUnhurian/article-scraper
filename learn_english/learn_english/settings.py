@@ -23,7 +23,6 @@ env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
 
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -49,7 +48,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'learn_english'
+    'django.contrib.postgres',
+    'learn_english',
+    'news'
 ]
 
 MIDDLEWARE = [
@@ -67,8 +68,7 @@ ROOT_URLCONF = 'learn_english.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,7 +93,7 @@ PASSWORD = os.getenv("DB_PASSWORD")
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': NAME,
         'USER': USER,
         'PASSWORD': PASSWORD,
